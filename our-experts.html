@@ -9,7 +9,7 @@
 }    
     
 #oe-header {
-    background: url("/media/wysiwyg/our-experts/expert-picks-bg.jpg");
+    background: url("/media/wysiwyg/our-experts/expert-picks-bg-l.jpg");
     min-height: 501px;
     position: relative;
 }
@@ -42,6 +42,7 @@
     text-transform: none;
     color: #333;
     font-size: 25px;
+    opacity: 1;
 }
     
 #profiles .SKcontainer {
@@ -50,10 +51,97 @@
     
 #our-experts #profiles .SKfour {
     background: #dedfe0;
+    position: relative;
 }
     
 #our-experts #profiles img {
     margin: 0 auto;
+}    
+    
+#profiles h2 {
+    position: absolute;
+    text-align: center;
+    background: rgba(0,0,0,0.7);
+    padding: 0.6em 0;
+    line-height: 0.6em;
+    font-family: 'Raleway', sans-serif;
+    color: #ffffff;
+    bottom: 1%;
+    width: 100%;
+    opacity: 1;
+}
+    
+#profiles h3,
+#profiles p {
+    font-family: 'Raleway', sans-serif;
+    color: #ffffff;
+    text-align: center;
+}
+    
+#profiles h3 {
+    font-size: 35px;
+    margin-bottom: 0.2em;
+}
+    
+#profiles p {
+    font-size: 25px;
+    margin-bottom: 0;
+}
+    
+.overlay-about {
+    opacity: 0;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    padding: 5em 0 0 0;
+}
+    
+    
+/*On Hover stuff*/    
+#profiles .SKfour:hover .overlay-about {
+    opacity: 1;
+}
+    
+#profiles .SKfour:hover h2 {
+    opacity: 0;
+}
+    
+/*overlay colors*/
+#melody .overlay-about {
+    background: rgba(248,197,217,0.7);
+}
+    
+#mc .overlay-about {
+    background: rgba(248,187,143,0.6);
+}
+
+#jeff .overlay-about {
+    background: rgba(153,225,247, 0.7);
+}
+    
+#vicky .overlay-about {
+    background: rgba(203,204,229,0.7);
+}
+    
+#paul .overlay-about {
+    background: rgba(143,216,164,0.7);
+}
+    
+#laeh .overlay-about {
+    background: rgba(249,154,144,0.7);
+}
+    
+#kristen .overlay-about {
+    background: rgba(151,222,241,0.7);
+}
+    
+#don .overlay-about {
+    background: rgba(51,51,51,0.7);
+}
+    
+#matthew .overlay-about {
+    background: rgba(255,234,129,0.7);
 }
 
 </style>
@@ -71,35 +159,88 @@
         <div class="SKcontainer clearfix">
             <div id="melody" class="SKfour SKcolumns">
                 <img src="/media/wysiwyg/our-experts/melody/melody.jpg" alt="Melody Profile Pic">
+                <h2>Melody</h2>
+                <div class="overlay-about">
+                    <h3>Melody</h3>
+                    <p>Marketing Manager</p>
+                    <p>Pharmaca Home Office</p>
+                </div>
             </div>
             <div id="mc" class="SKfour SKcolumns">
                 <img src="/media/wysiwyg/our-experts/mc/mary-catherine.jpg" alt="Mary Catherine Profile Pic">
+                <h2>Mary Catherine</h2>
+                <div class="overlay-about">
+                    <h3>Mary Catherine</h3>
+                    <p>Beauty Buyer</p>
+                    <p>Pharmaca Home Office</p>
+                </div>
             </div>
             <div id="jeff" class="SKfour SKcolumns">
                 <img src="/media/wysiwyg/our-experts/jeff/jeff.jpg" alt="Jeff Profile Pic">
+                <h2>Jeff</h2>
+                <div class="overlay-about">
+                    <h3>Jeff</h3>
+                    <p>Acupuncturist</p>
+                    <p>Pharmaca - Portland</p>
+                </div>
             </div>
         </div>
         <div class="SKcontainer clearfix">
             <div id="vicky" class="SKfour SKcolumns">
                 <img src="/media/wysiwyg/our-experts/vicky/vicky.jpg" alt="Vicky Profile Pic">
+                <h2>Vicky</h2>
+                <div class="overlay-about">
+                    <h3>Vicky</h3>
+                    <p>Pharmaca Market Manager</p>
+                    <p>Pharmaca - Seattle Wallingford</p>
+                </div>
             </div>
             <div id="paul" class="SKfour SKcolumns">
                 <img src="/media/wysiwyg/our-experts/paul/paul.jpg" alt="Paul Profile Pic">
+                <h2>Paul</h2>
+                <div class="overlay-about">
+                    <h3>Paul</h3>
+                    <p>Herbalist</p>
+                    <p>Pharmaca - Sonoma</p>
+                </div>
             </div>
             <div id="laeh" class="SKfour SKcolumns">
                 <img src="/media/wysiwyg/our-experts/laeh/laeh.jpg" alt="Laeh Profile Pic">
+                <h2>Laeh</h2>
+                <div class="overlay-about">
+                    <h3>Laeh</h3>
+                    <p>Esthetician, Herbalist</p>
+                    <p>Pharmaca - South Boulder</p>
+                </div>
             </div>
         </div>
         <div class="SKcontainer clearfix">
             <div id="kristen" class="SKfour SKcolumns">
                 <img src="/media/wysiwyg/our-experts/kristen/kristen.jpg" alt="Kristen Profile Pic">
+                <h2>Kristen</h2>
+                <div class="overlay-about">
+                    <h3>Kristen</h3>
+                    <p>Lifestyle Buyer</p>
+                    <p>Pharmaca - Home Office</p>
+                </div>
             </div>
             <div id="don" class="SKfour SKcolumns">
                 <img src="/media/wysiwyg/our-experts/don/don.jpg" alt="Don Profile Pic">
+                <h2>Don</h2>
+                <div class="overlay-about">
+                    <h3>Don</h3>
+                    <p>Supplements Buyer</p>
+                    <p>Pharmaca - Home Office</p>
+                </div>
             </div>
             <div id="matthew" class="SKfour SKcolumns">
                 <img src="/media/wysiwyg/our-experts/matthew/matthew.jpg" alt="Matthew Profile Pic">
-
+                <h2>Matthew</h2>
+                <div class="overlay-about">
+                    <h3>Matthew</h3>
+                    <p>Herbalist – Lead Practitioner</p>
+                    <p>Pharmaca - North Boulder</p>
+                </div>
             </div>
         </div>
     </div>    
