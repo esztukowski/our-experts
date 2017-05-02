@@ -45,20 +45,20 @@
     opacity: 1;
 }
     
-#profiles .SKcontainer {
+#profile-pictures .SKcontainer {
     margin: 4% auto 0;
 }
     
-#our-experts #profiles .SKfour {
+#our-experts #profile-pictures .SKfour {
     background: #dedfe0;
     position: relative;
 }
     
-#our-experts #profiles img {
+#our-experts #profile-pictures img {
     margin: 0 auto;
 }    
     
-#profiles h2 {
+#profile-pictures h2 {
     position: absolute;
     text-align: center;
     background: rgba(0,0,0,0.7);
@@ -71,19 +71,19 @@
     opacity: 1;
 }
     
-#profiles h3,
-#profiles p {
+#profile-pictures h3,
+#profile-pictures p {
     font-family: 'Raleway', sans-serif;
     color: #ffffff;
     text-align: center;
 }
     
-#profiles h3 {
+#profile-pictures h3 {
     font-size: 35px;
     margin-bottom: 0.2em;
 }
     
-#profiles p {
+#profile-pictures p {
     font-size: 25px;
     margin-bottom: 0;
 }
@@ -132,7 +132,8 @@
     background: rgba(249,154,144,0.7);
 }
     
-#kristen .overlay-about {
+#kristen .overlay-about,
+#kristen-header {
     background: rgba(151,222,241,0.7);
 }
     
@@ -143,6 +144,22 @@
 #matthew .overlay-about {
     background: rgba(255,234,129,0.7);
 }
+    
+/*hidden product style stuff*/
+.centerImg {
+  float: none;
+  margin: 0 auto;
+}
+
+.product-list {
+  opacity: 0;
+  display: none;
+}
+
+.active {
+  opacity: 1;
+  transition: all 1s ease-in;
+}    
 
 </style>
 
@@ -155,7 +172,7 @@
             <h2>Find out what's on the must-have list of our practitioners, buyers and staff</h2>
         </div>
     </div>
-    <div id="profiles">
+    <div id="profile-pictures">
         <div class="SKcontainer clearfix">
             <div id="melody" class="SKfour SKcolumns">
                 <img src="/media/wysiwyg/our-experts/melody/melody.jpg" alt="Melody Profile Pic">
@@ -243,6 +260,58 @@
                 </div>
             </div>
         </div>
-    </div>    
+    </div> 
+    
+    
+    <div id="kristen-products" class="SKcontainer clearfix product-list">
+        <div id="kristen-header" class="SKtwelve SKcolumns">
+            <img src="/media/wysiwyg/our-experts/kristen/kristen.jpg" alt="Kristen Profile Pic">
+        </div>
+    </div>
+    
+    
+    
     
 </div>
+
+<script>
+
+$j(document).ready(function() {
+
+ //prevents being able to fade out/in faces multiple times 
+ var unClicked = true;
+  
+//Show products, hide other profile pics
+  $j('#profile-pictures .SKfour').on("click", function() {
+    if (unClicked) {
+      var personID = this.getAttribute('id')
+      $j('#profile-pictures .SKfour').fadeOut(500);
+      $j(this).addClass("centerImg").fadeIn(800);
+      unClicked = false;
+      showProducts("#" + personID);
+    }  
+  })
+
+//Close products, return profile pics to right place
+$j(".closeBtn").on("click", function() {
+  var parentId = $(this).parent().parent().attr('id');
+  var profilePic = parentId.split("-")[0];
+  $j('#profile-pictures .SKfour').show();
+  $j("#" + profilePic).removeClass("centerImg");
+  $j(".product-list").removeClass("active").hide();
+  unClicked = true;
+})
+
+//show Products based on who you click
+function showProducts(thePerson) {
+  var showinThings = $(thePerson + "-products.product-list");
+  $j(".product-list").show();
+  $j(".product-list").not(showinThings).hide();
+  setTimeout(function() {
+    showinThings.addClass("active");
+  },1000); 
+}
+  
+})
+
+</script>
