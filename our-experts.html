@@ -99,11 +99,11 @@
     
     
 /*On Hover stuff*/    
-#profiles .SKfour:hover .overlay-about {
+#profile-pictures .SKfour:hover .overlay-about {
     opacity: 1;
 }
     
-#profiles .SKfour:hover h2 {
+#profile-pictures .SKfour:hover h2 {
     opacity: 0;
 }
     
@@ -146,7 +146,7 @@
 }
     
 /*hidden product style stuff*/
-.centerImg {
+#profile-pictures .centerImg {
   float: none;
   margin: 0 auto;
 }
@@ -176,7 +176,7 @@
         <div class="SKcontainer clearfix">
             <div id="melody" class="SKfour SKcolumns">
                 <img src="/media/wysiwyg/our-experts/melody/melody.jpg" alt="Melody Profile Pic">
-                <h2>Melody</h2>
+                <h2>Marketing Manager</h2>
                 <div class="overlay-about">
                     <h3>Melody</h3>
                     <p>Marketing Manager</p>
@@ -185,7 +185,7 @@
             </div>
             <div id="mc" class="SKfour SKcolumns">
                 <img src="/media/wysiwyg/our-experts/mc/mary-catherine.jpg" alt="Mary Catherine Profile Pic">
-                <h2>Mary Catherine</h2>
+                <h2>Beauty Buyer</h2>
                 <div class="overlay-about">
                     <h3>Mary Catherine</h3>
                     <p>Beauty Buyer</p>
@@ -194,7 +194,7 @@
             </div>
             <div id="jeff" class="SKfour SKcolumns">
                 <img src="/media/wysiwyg/our-experts/jeff/jeff.jpg" alt="Jeff Profile Pic">
-                <h2>Jeff</h2>
+                <h2>Acupuncturist</h2>
                 <div class="overlay-about">
                     <h3>Jeff</h3>
                     <p>Acupuncturist</p>
@@ -205,7 +205,7 @@
         <div class="SKcontainer clearfix">
             <div id="vicky" class="SKfour SKcolumns">
                 <img src="/media/wysiwyg/our-experts/vicky/vicky.jpg" alt="Vicky Profile Pic">
-                <h2>Vicky</h2>
+                <h2>Pharmaca Market Manager</h2>
                 <div class="overlay-about">
                     <h3>Vicky</h3>
                     <p>Pharmaca Market Manager</p>
@@ -214,7 +214,7 @@
             </div>
             <div id="paul" class="SKfour SKcolumns">
                 <img src="/media/wysiwyg/our-experts/paul/paul.jpg" alt="Paul Profile Pic">
-                <h2>Paul</h2>
+                <h2>Herbalist</h2>
                 <div class="overlay-about">
                     <h3>Paul</h3>
                     <p>Herbalist</p>
@@ -223,7 +223,7 @@
             </div>
             <div id="laeh" class="SKfour SKcolumns">
                 <img src="/media/wysiwyg/our-experts/laeh/laeh.jpg" alt="Laeh Profile Pic">
-                <h2>Laeh</h2>
+                <h2>Esthetician, Herbalist</h2>
                 <div class="overlay-about">
                     <h3>Laeh</h3>
                     <p>Esthetician, Herbalist</p>
@@ -234,7 +234,7 @@
         <div class="SKcontainer clearfix">
             <div id="kristen" class="SKfour SKcolumns">
                 <img src="/media/wysiwyg/our-experts/kristen/kristen.jpg" alt="Kristen Profile Pic">
-                <h2>Kristen</h2>
+                <h2>Lifestyle Buyer</h2>
                 <div class="overlay-about">
                     <h3>Kristen</h3>
                     <p>Lifestyle Buyer</p>
@@ -243,7 +243,7 @@
             </div>
             <div id="don" class="SKfour SKcolumns">
                 <img src="/media/wysiwyg/our-experts/don/don.jpg" alt="Don Profile Pic">
-                <h2>Don</h2>
+                <h2>Supplements Buyer</h2>
                 <div class="overlay-about">
                     <h3>Don</h3>
                     <p>Supplements Buyer</p>
@@ -252,10 +252,10 @@
             </div>
             <div id="matthew" class="SKfour SKcolumns">
                 <img src="/media/wysiwyg/our-experts/matthew/matthew.jpg" alt="Matthew Profile Pic">
-                <h2>Matthew</h2>
+                <h2>Herbalist – Lead Practitioner</h2>
                 <div class="overlay-about">
                     <h3>Matthew</h3>
-                    <p>Herbalist – Lead Practitioner</p>
+                    <p>Herbalist</p>
                     <p>Pharmaca - North Boulder</p>
                 </div>
             </div>
@@ -264,9 +264,13 @@
     
     
     <div id="kristen-products" class="SKcontainer clearfix product-list">
-        <div id="kristen-header" class="SKtwelve SKcolumns">
-            <img src="/media/wysiwyg/our-experts/kristen/kristen.jpg" alt="Kristen Profile Pic">
-        </div>
+        <div class="SKfour SKcolumns">TestTestTest</div>
+        <div class="SKfour SKcolumns">TestTestTest</div>
+        <div class="SKfour SKcolumns">TestTestTest</div>
+        <div class="SKfour SKcolumns">TestTestTest</div>
+        <div class="SKfour SKcolumns">TestTestTest</div>
+        <div class="SKfour SKcolumns">TestTestTest</div>
+        <div class="SKfour SKcolumns">TestTestTest</div>
     </div>
     
     
@@ -276,42 +280,43 @@
 
 <script>
 
-$j(document).ready(function() {
-
  //prevents being able to fade out/in faces multiple times 
  var unClicked = true;
   
 //Show products, hide other profile pics
-  $j('#profile-pictures .SKfour').on("click", function() {
+  jQuery('#profile-pictures .SKfour').on("click", function() {
     if (unClicked) {
-      var personID = this.getAttribute('id')
-      $j('#profile-pictures .SKfour').fadeOut(500);
-      $j(this).addClass("centerImg").fadeIn(800);
+      var personID = this.getAttribute('id');
+      var theParent = jQuery(this).parent();    
+      jQuery('#profile-pictures .SKfour').fadeOut(500);
+      jQuery(this).addClass("centerImg").fadeIn(800);
+      jQuery("#profile-pictures .SKcontainer").not(theParent).hide();
       unClicked = false;
       showProducts("#" + personID);
     }  
   })
 
 //Close products, return profile pics to right place
-$j(".closeBtn").on("click", function() {
-  var parentId = $(this).parent().parent().attr('id');
+jQuery(".closeBtn").on("click", function() {
+  var parentId = jQuery(this).parent().parent().attr('id');
   var profilePic = parentId.split("-")[0];
-  $j('#profile-pictures .SKfour').show();
-  $j("#" + profilePic).removeClass("centerImg");
-  $j(".product-list").removeClass("active").hide();
+  jQuery('#profile-pictures .SKfour').show();
+  jQuery("#" + profilePic).removeClass("centerImg");
+  jQuery(".product-list").removeClass("active").hide();
   unClicked = true;
 })
 
 //show Products based on who you click
 function showProducts(thePerson) {
-  var showinThings = $(thePerson + "-products.product-list");
-  $j(".product-list").show();
-  $j(".product-list").not(showinThings).hide();
+  var showinThings = jQuery(thePerson + "-products.product-list");
+  jQuery("#profile-pictures h2").hide();
+  jQuery("#profile-pictures .overlay-about").hide();    
+  jQuery(".product-list").show();
+  jQuery(".product-list").not(showinThings).hide();
   setTimeout(function() {
     showinThings.addClass("active");
   },1000); 
 }
   
-})
 
 </script>
