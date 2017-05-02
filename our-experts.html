@@ -28,21 +28,31 @@
     
 }
     
-#title h1 {
+#title h1,
+#our-experts .product-list .h1    {
     font-family: 'Libre Baskerville', serif;
     color: #333;
     font-style: italic;
     font-size: 50px;
     margin-bottom: 0;
 }
+    
+ #our-experts .product-list .h1 {
+    font-size: 36px;
+}
 
     
-#title h2 {
+#title h2, #our-experts .product-list .h2, #our-experts p {
     font-family: 'Raleway', Helvetica, sans-serif;
     text-transform: none;
     color: #333;
     font-size: 25px;
     opacity: 1;
+}
+    
+#our-experts .prod-title p {
+    font-size: 18px;
+    line-height: 2em;
 }
     
 #profile-pictures .SKcontainer {
@@ -108,40 +118,62 @@
 }
     
 /*overlay colors*/
-#melody .overlay-about {
+#melody .overlay-about,
+.melody-bg-color {
     background: rgba(248,197,217,0.7);
 }
+
+.melody-bg-color,
+.mc-bg-color,
+.jeff-bg-color,
+.vicky-bg-color,
+.paul-bg-color,
+.laeh-bg-color,
+.kristen-bg-color,
+.don-bg-color,
+matthew-bg-color {
+    opacity: 0;
+    transition: all 1s ease-in;
+}
     
-#mc .overlay-about {
+    
+#mc .overlay-about,
+.mc-bg-color {
     background: rgba(248,187,143,0.6);
 }
 
-#jeff .overlay-about {
+#jeff .overlay-about,
+.jeff-bg-color {
     background: rgba(153,225,247, 0.7);
 }
     
-#vicky .overlay-about {
+#vicky .overlay-about,
+.vicky-bg-color {
     background: rgba(203,204,229,0.7);
 }
     
-#paul .overlay-about {
+#paul .overlay-about,
+.paul-bg-color {
     background: rgba(143,216,164,0.7);
 }
     
-#laeh .overlay-about {
+#laeh .overlay-about,
+.laeh-bg-color {
     background: rgba(249,154,144,0.7);
 }
     
 #kristen .overlay-about,
-#kristen-header {
+.kristen-bg-color {
     background: rgba(151,222,241,0.7);
 }
     
-#don .overlay-about {
+#don .overlay-about,
+.don-bg-color {
     background: rgba(51,51,51,0.7);
 }
     
-#matthew .overlay-about {
+#matthew .overlay-about,
+.matthew-bg-color {
     background: rgba(255,234,129,0.7);
 }
     
@@ -159,7 +191,16 @@
 .active {
   opacity: 1;
   transition: all 1s ease-in;
-}    
+} 
+    
+.prod-title {
+    text-align: center;
+}
+    
+.prod-title p {
+    width: 60%;
+    margin: 0 auto;
+}
 
 </style>
 
@@ -205,10 +246,10 @@
         <div class="SKcontainer clearfix">
             <div id="vicky" class="SKfour SKcolumns">
                 <img src="/media/wysiwyg/our-experts/vicky/vicky.jpg" alt="Vicky Profile Pic">
-                <h2>Pharmaca Market Manager</h2>
+                <h2>Pharmacist</h2>
                 <div class="overlay-about">
                     <h3>Vicky</h3>
-                    <p>Pharmaca Market Manager</p>
+                    <p>Pharmacist</p>
                     <p>Pharmaca - Seattle Wallingford</p>
                 </div>
             </div>
@@ -263,14 +304,24 @@
     </div> 
     
     
-    <div id="kristen-products" class="SKcontainer clearfix product-list">
-        <div class="SKfour SKcolumns">TestTestTest</div>
-        <div class="SKfour SKcolumns">TestTestTest</div>
-        <div class="SKfour SKcolumns">TestTestTest</div>
-        <div class="SKfour SKcolumns">TestTestTest</div>
-        <div class="SKfour SKcolumns">TestTestTest</div>
-        <div class="SKfour SKcolumns">TestTestTest</div>
-        <div class="SKfour SKcolumns">TestTestTest</div>
+    <div id="kristen-products" class="product-list">
+        <div class="SKcontainer clearfix profile-info">
+            <div class="SKtwelve SKcolumns prod-title">
+                <h2 class="h1">Kristen</h2>
+                <h3 class="h2">Lifestyle Buyer</h3>
+                <p>Kristen loves working with her team, who make it their mission every day to provide customers with the best in natural care. She is passionate about healthy eating and loves to cook. In her spare time she takes advantage of all the sunny days here in Colorado, and enjoys running, hiking and snowboarding. Kristen has been with Pharmaca since 2014.</p>
+            </div>
+        </div>
+        <div class="SKcontainer clearfix">
+            <div class="SKfour SKcolumns">TestTestTest</div>
+            <div class="SKfour SKcolumns">TestTestTest</div>
+            <div class="SKfour SKcolumns">TestTestTest</div>
+        </div>
+        <div class="SKcontainer clearfix">
+            <div class="SKfour SKcolumns">TestTestTest</div>
+            <div class="SKfour SKcolumns">TestTestTest</div>
+            <div class="SKfour SKcolumns">TestTestTest</div>
+        </div>
     </div>
     
     
@@ -288,9 +339,12 @@
     if (unClicked) {
       var personID = this.getAttribute('id');
       var theParent = jQuery(this).parent();    
-      jQuery('#profile-pictures .SKfour').fadeOut(500);
-      jQuery(this).addClass("centerImg").fadeIn(800);
-      jQuery("#profile-pictures .SKcontainer").not(theParent).hide();
+      jQuery("#profile-pictures .SKcontainer").not(theParent).hide();  
+      jQuery('#profile-pictures .SKfour').fadeOut(200);
+      jQuery(this).addClass("centerImg").fadeIn(1000);
+      setTimeout(function() {
+        jQuery(theParent).hide().addClass(personID + "-bg-color active").show().fadeIn(1000); 
+      },1000);      
       unClicked = false;
       showProducts("#" + personID);
     }  
