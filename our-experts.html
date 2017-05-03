@@ -121,19 +121,22 @@
 #melody .overlay-about,
 .melody-bg-color {
     background: rgba(248,197,217,0.7);
-}
+}    
 
-.melody-bg-color,
-.mc-bg-color,
-.jeff-bg-color,
-.vicky-bg-color,
-.paul-bg-color,
-.laeh-bg-color,
-.kristen-bg-color,
-.don-bg-color,
-matthew-bg-color {
+#our-experts .melody-bg-color,
+#our-experts .mc-bg-color,
+#our-experts .jeff-bg-color,
+#our-experts .vicky-bg-color,
+#our-experts .paul-bg-color,
+#our-experts .laeh-bg-color,
+#our-experts .kristen-bg-color,
+#our-experts .don-bg-color,
+#our-experts .matthew-bg-color {
     opacity: 0;
-    transition: all 1s ease-in;
+}
+    
+#our-experts .no-top {
+     margin-top: 0;   
 }
     
     
@@ -178,19 +181,23 @@ matthew-bg-color {
 }
     
 /*hidden product style stuff*/
-#profile-pictures .centerImg {
+#our-experts #profile-pictures .centerImg {
   float: none;
   margin: 0 auto;
 }
+    
+.centerImg {
+    display: none;
+}    
 
 .product-list {
   opacity: 0;
   display: none;
 }
 
-.active {
+#our-experts .active {
   opacity: 1;
-  transition: all 1s ease-in;
+  transition: background 1s ease-in;
 } 
     
 .prod-title {
@@ -322,6 +329,9 @@ matthew-bg-color {
             <div class="SKfour SKcolumns">TestTestTest</div>
             <div class="SKfour SKcolumns">TestTestTest</div>
         </div>
+        <div class="SKcontainer clearfix">
+            <div class="SKtwelve SKcolumns closeBtn">CLOSE</div>
+        </div>
     </div>
     
     
@@ -337,15 +347,25 @@ matthew-bg-color {
 //Show products, hide other profile pics
   jQuery('#profile-pictures .SKfour').on("click", function() {
     if (unClicked) {
+    //personID is the name of the expert    
       var personID = this.getAttribute('id');
-      var theParent = jQuery(this).parent();    
+    //theParent is SKcontainer of the clicked box    
+      var theParent = jQuery(this).parent();
+    //hide the profile picture box, give it centerImg class    
+      jQuery(this).addClass("centerImg");
+    //kills top margin on current SKcontainer    
+      jQuery(theParent).addClass("no-top")  
+    //hide other SKcontainers and boxes except for the row with clicked el    
       jQuery("#profile-pictures .SKcontainer").not(theParent).hide();  
-      jQuery('#profile-pictures .SKfour').fadeOut(200);
-      jQuery(this).addClass("centerImg").fadeIn(1000);
+      jQuery('#profile-pictures .SKfour').hide();
+    //fades in all the good stuff  
       setTimeout(function() {
-        jQuery(theParent).hide().addClass(personID + "-bg-color active").show().fadeIn(1000); 
-      },1000);      
+        jQuery('.centerImg').fadeIn(800);  
+        jQuery(theParent).hide().addClass(personID + "-bg-color active").show().fadeIn(800); 
+      },800);
+    //makes it so you cant re-click right away    
       unClicked = false;
+    //shows all the products    
       showProducts("#" + personID);
     }  
   })
@@ -353,8 +373,11 @@ matthew-bg-color {
 //Close products, return profile pics to right place
 jQuery(".closeBtn").on("click", function() {
   var parentId = jQuery(this).parent().parent().attr('id');
+//profilePic is just the persons name for id purposes    
   var profilePic = parentId.split("-")[0];
-  jQuery('#profile-pictures .SKfour').show();
+  jQuery(".SKcontainer").removeClass(profilePic + "-bg-color no-top");
+//show everything that got hidden    
+  jQuery('#profile-pictures .SKcontainer, #profile-pictures .SKfour, #profile-pictures .overlay-about').show();
   jQuery("#" + profilePic).removeClass("centerImg");
   jQuery(".product-list").removeClass("active").hide();
   unClicked = true;
